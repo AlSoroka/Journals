@@ -3,8 +3,14 @@ import datetime
 from iptcinfo3 import IPTCInfo
 import os
 
-year
-base = r'D:\enp.by\Develop\Журналы\_cover\\'
+now = str(datetime.datetime.now())
+den=now[8:10]
+mes=now[5:7]
+god=now[:4]
+   
+    
+base = os.path.join(os.getcwd(),'_cover\\')
+
 fileExt = '.JPG'
 filelist = os.listdir(base)
 for fl in filelist:
@@ -20,7 +26,7 @@ for fl in filelist:
     info['source'] ='Энергопресс, BY'.encode(encoding = 'cp1251')
     info['writer/editor'] ='Энергопресс, BY'.encode(encoding = 'cp1251')
     info['contact'] =['enp.by', '+375-29-385-96-66']
-    info['copyright notice']='© Энергопресс, 2020 г.'.encode(encoding = 'cp1251')
+    info['copyright notice']=('© Энергопресс, '+ god+ ' г.').encode(encoding = 'cp1251')
     info.save()
 
 

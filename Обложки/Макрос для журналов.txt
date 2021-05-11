@@ -79,6 +79,10 @@ Do While Len(a) > 0
     penultimate = InStrRev(ActiveDocument.FilePath, "\", Len(ActiveDocument.FilePath) - 1)
     ' Build new path for ready covers
     out_path = Left(ActiveDocument.FilePath, penultimate) + "_cover\"
+
+    If Dir(out_path, vbDirectory) = "" Then
+        MkDir out_path
+    End If
     
     
     
