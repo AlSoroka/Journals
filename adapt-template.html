@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" type="image/x-icon" href="../stat/favicon.ico" >
+	<link rel="icon" type="image/png" href="../stat/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="../stat/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../stat/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="../stat/favicon-120x120.png" sizes="120x120">
+	<link rel="amphtml" href="{{amp-link}}">  <!--Ссылка на ускоренную страницу Google -->
+
+<!-- Google Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139082357-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139082357-1');
+</script>
+<!--End GA-->
+<!-- Яндекс Вебмастер-->
+<meta name="yandex-verification" content="087ad106a4c17e5d"> 
+<!-- End Yandex Web Master -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(53318311, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/53318311" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- End Yandex.Metrika counter -->
+<link rel="stylesheet" type="text/css" href="../stat/adapt.css">
+<title>{{adapt-title}}</title>
+<meta name="description" content="{{adapt-description}}">
+<meta name="keywords" content="{{adapt-keywords}}">
+</head>
+	<body>
+		<nav> 
+			<menu>
+				<li><a href="../" class="active">Документы</a></li>
+				<li><a href="../journ">Журналы</a></li>
+				<li><a href="#" class="menuDisabled">Знаки </a></li>
+				<li><a href="../contact">Контакты</a></li>
+			</menu>
+			<hr>	
+		</nav>
+		<a id="go_home" class="butt" href="https://enp.by"><img  id="home" src="../../stat/home-symbol.png"  width="25" height="20"> </img></a>
+		<div id="main" 	itemscope itemtype="http://schema.org/Product">
+			<h1 itemprop="name">{{adapt-h1}}</h1>
+			<div style="display:none">
+				<span itemprop="description">{{adapt-description}}</span>
+				<span itemprop="sku">{{adapt-order-numb}}</span>
+			</div>
+			<div id="remark"><small>{{adapt-remark}}</small></div>
+			<div id="pageDate">
+				Дата обновления страницы: <time datetime="{{adapt-datetime-system}}">{{adapt-date-russian}}</time>
+			</div>
+			<img  id="cover" itemprop="image" src="{{adapt-image-full-adress}}"  alt="{{adapt-alt-img-cover}}" width="250" height="365"></img>
+				<table id="details">
+						<tbody><tr>
+							<td class="col25">
+							Вступление в силу:
+							</td>
+							<td class="col75">
+							{{adapt-effective-date}} 
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Количество страниц:
+							</td>
+							<td class="col75">
+								{{adapt-number-of-page}}
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Переплет:
+							</td>
+							<td class="col75">
+								{{adapt-cover}}
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Распространение:
+							</td>
+							<td class="col75">
+								Издательство «ЭНЕРГОПРЕСС»
+							</td>
+						</tr>
+						<tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+							<td class="col25">
+								Цена:
+							</td>
+							<td class="col75">
+								<span id="price" itemprop="price">{{adapt-price}}</span>&nbsp;руб. <span style="display:none" itemprop="priceCurrency">BYN</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Скидки:
+							</td>
+							<td class="col75">
+								{{adapt-discount}}
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Доставка:
+							</td>
+							<td class="col75">
+								Бесплатная доставка по всей республике. 
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Скачать PDF
+							</td>
+							<td class="col75">
+								{{adapt-pdf-content}}	
+							</td>
+						</tr>
+						<tr>
+							<td class="col25">
+								Заказ:
+							</td>
+							<td class="col75">
+							<a id="knopka1" rel="nofollow" class="butt" href="../stat/{{adapt-order-with-attributes}}" title="Счет-фактура">Счет-фактура</a> или: <a href="tel: +375293859666">(029) 385-96-66</a> 
+							</td>
+						</tr>
+					</tbody></table>		
+			<article>	
+				{{adapt-article}}
+			</article>
+			<footer itemscope itemtype="http://schema.org/Organization" >
+					<p itemprop="name">ИЗДАТЕЛЬСТВО «ЭНЕРГОПРЕСС»</p>   
+					<p>УНП&nbsp;190399602</p>  
+					<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">Адрес: <span itemprop="addressCountry">BY</span> <span itemprop="postalCode">220121</span>, <span itemprop="addressLocality">г.&nbsp;Минск</span>, <span itemprop="streetAddress">ул.&nbsp;Матусевича,&nbsp;23-213</p>  
+					<p>Тел.:&nbsp;<a href="tel: +375293859666"><span itemprop="telephone">+375-29-385-96-66</span></a></p>   
+					<p>Факс:&nbsp;<span itemprop="faxNumber">+375-17-392-33-33</span></p>
+					<p>E-mail:&nbsp;<a href="mailto:zakaz@energetika.by"><span itemprop="email">zakaz@energetika.by</span></a>
+					<p>©&nbsp;2021  «Энергопресс»</p>&nbsp;
+					
+			</footer>
+		</div>   
+	</body>
+</html>

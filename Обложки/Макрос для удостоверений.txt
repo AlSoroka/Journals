@@ -1,0 +1,103 @@
+Sub ReplaceDate()
+
+Dim EXCELAPP As Object
+Dim p As Page
+Dim q As String
+Dim sh, sel As Shape
+Dim a As String
+
+' Filter for hihg-resolution export
+Dim expOptsH As New StructExportOptions
+expOptsH.ImageType = cdrRGBColorImage
+expOptsH.AntiAliasingType = cdrNormalAntiAliasing
+expOptsH.ResolutionX = 300
+expOptsH.ResolutionY = 300
+expOptsH.SizeX = 980
+
+expOptsH.Overwrite = True
+
+' Filter for low-resolution export
+Dim expOptsL As New StructExportOptions
+expOptsL.ImageType = cdrRGBColorImage
+expOptsL.AntiAliasingType = cdrNormalAntiAliasing
+expOptsL.ResolutionX = 300
+expOptsL.ResolutionY = 300
+expOptsL.SizeX = 490
+
+expOptsL.Overwrite = True
+
+
+ActiveDocument.ReferencePoint = cdrBottomLeft
+
+ActiveDocument.Unit = cdrPixel
+
+
+
+pgNum = 1
+dt = Date
+ActiveDocument.Pages(1).Activate
+ActivePage.Layers("Layer 2").Activate
+oldText = ActiveLayer.FindShapes(, cdrTextShape)(1).Text.Story
+
+
+Do While pgNum <= ActiveDocument.Pages.Count
+    ActiveDocument.Pages(pgNum).Activate
+    Set p = ActivePage
+    pageName = p.Name
+
+   
+' Во втором слое содержаться текст с датой
+
+    ActivePage.Layers("Layer 2").Activate
+    For Each sh In ActiveLayer.FindShapes(, cdrTextShape)
+        sh.Text.Replace oldText, CStr(Date), False, ReplaceAll:=True
+    Next sh
+    ActivePage.Layers("Layer 1").Activate
+    ActivePage.Shapes.All.CreateSelection
+    Set sel = ActiveDocument.Selection
+    
+    'ActiveLayer.Shapes.All.CreateSelection
+    Height_all = sel.SizeHeight
+    Width_all = sel.SizeWidth
+' Рассчитываем высоту для экспорта
+    expOptsH.SizeY = Round(Height_all / Width_all * 980, 0)
+    expOptsL.SizeY = Round(Height_all / Width_all * 490, 0)
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+    
+    ' Find penultimate slash in path
+    penultimate = InStrRev(ActiveDocument.FilePath, "\", Len(ActiveDocument.FilePath) - 1)
+    ' Build new path for ready covers
+    out_path = Left(ActiveDocument.FilePath, penultimate) + "_cover\"
+    
+    
+    
+    
+    
+    ' Create low-resolution cover
+    q = out_path & pageName & ".jpg"
+    ActiveDocument.Export q, cdrJPEG, cdrCurrentPage, expOptsL
+    ' Create high-resolution cover
+    q = out_path & pageName & "_.jpg"
+    ActiveDocument.Export q, cdrJPEG, cdrCurrentPage, expOptsH
+    ' Delete temp layer, wich contains Name of journ, id  and date. (Return to base temlate)
+    
+    
+    
+
+
+    pgNum = pgNum + 1
+Loop
+
+End Sub
+

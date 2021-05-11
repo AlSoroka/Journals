@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" type="image/x-icon" href="../../stat/favicon.ico" >
+	<link rel="icon" type="image/png" href="../../stat/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="../../stat/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../../stat/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="../../stat/favicon-120x120.png" sizes="120x120">
+   
+<!-- Google Analytics-->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139082357-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-139082357-1');
+		</script>
+<!--End GA-->
+<!-- Яндекс Вебмастер-->
+<meta name="yandex-verification" content="087ad106a4c17e5d" /> 
+<!-- End Yandex Web Master -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(53318311, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/53318311" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- End Yandex.Metrika counter -->
+<link rel="stylesheet" type="text/css" href="../../stat/detail.css">
+
+<title>{{name}}</title>
+<meta name="description" content="{{name}}" />
+<meta name="keywords" content="{{name}}" />
+
+</head>
+
+
+<body>
+<nav> 
+	<menu>
+		<li><a href="../../">Документы</a></li>
+		<li><a href="#" class="active">Журналы</a></li>
+		<li><a href="#" class="menuDisabled">Знаки </a></li>
+		<li><a href="../../contact">Контакты</a></li>
+	</menu>
+</nav>
+
+
+
+
+
+<div id="descr">
+
+<div id="phon">  <!-- Закрыт  в 158 строке -->
+<h1>{{name}}</h1>
+
+<div style="clear:both">&nbsp;</div>
+
+<div id="pageDate"> Дата обновления страницы: <time datetime="{{datetime}}">{{date_norm}}</time></div>
+
+
+<div id="imgCover">
+	<img src="../_cover/{{id}}.jpg" width="300px" vspace="5" alt="{{name}}">
+</div> <!-- id="imgCover"  -->
+
+<div id="details"> <!-- Закрыт  в  156 строке -->
+			<table align="center" cellpadding="10" cellspacing="10" style="margin:5px" >
+				<tr>
+					<td class="col25">
+						Количество страниц:
+					</td>
+					<td class="col75" colspan="3">
+						{{page_count}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+						Нумерация страниц:
+					</td>
+					<td class="col75" colspan="3">
+						<a href="#openModalNumber"><b>Пронумерованы</b></a>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="col25">
+						Прошивка нититью:
+					</td>
+					<td class="col75" colspan="3">
+						<a href="#openModalStitched"><b>Прошит</b> нитью, кончики заклеены, на последней странице нанесена удостоверяющая надпись.</a> 
+					</td>
+				</tr>
+
+				<tr>
+					<td class="col25">
+						Переплет:
+					</td>
+					<td class="col75" colspan="3">
+						Мелованный картон, корешок - бумвинил
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+						Изготовление:
+					</td>
+					<td class="col75" colspan="3">
+						Издательство &laquo;ЭНЕРГОПРЕСС&raquo;
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+						Цена:
+					</td>
+					<td class="col75" colspan="3">
+						{{parse_price}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+						Доставка:
+					</td>
+					<td class="col75" colspan="3">
+						<b>Бесплатная доставка</b> по всей республике.
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+					Порядок ведения:
+					</td>
+					<td class="col75" colspan="3">
+					{{isNormativ}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+					Форма<br>скачать:
+					</td>
+					<td class="col75" colspan="3">
+						{{isForm}}
+					</td>
+				</tr>
+				<tr>
+					<td class="col25">
+						Заказ:
+					</td>
+					<td class="col25">
+						<input type="number" id="{{id}}" value="" size="2" min="1" max="999" title="Введите необходимое Вам количество экз."><span style="font-size:80%">&nbsp;шт.</span>
+					
+					</td>	
+					<td class="col25">	
+						<a id="knopka1" class="butt8" onclick="AddToOrder('{{id}}')"  title="Добавить в заказ и вернуться к перечню" >Добавить в заказ</a> 
+					</td>
+					
+					<td class="col25">	
+						<a id="knopka2" class="butt8" onclick="AddToOrder('{{id}}')"  title="Перейти к перечню" >К перечню товаров</a> 
+					
+					</td>
+				</tr>
+
+			</table>
+	</div> <!-- id="details" -->
+
+</div> <!-- id="phon" -->
+
+
+<div id="openModalStitched" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Пример прошивки журналов издательства «ЭНЕРГОПРЕСС»</h3>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+                <div class="modal-body">
+                    <img src="../../stat/stitched.jpg"width="300px" hspace="5" vspace="5" alt="Нумерация страниц">
+                </div>
+            </div>
+        </div>
+</div>
+
+
+<div id="openModalNumber" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Пример нумерация страниц в журналах издательства «ЭНЕРГОПРЕСС»</h3>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+                <div class="modal-body">
+                    <img src="../../stat/page-number.jpg" width="300px" hspace="5" vspace="5" alt="Прошивка журналов">
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="descript">
+		<article>
+		
+			<h3>{{name}}</h3>
+			{{description}}
+		</article>
+	</div>	
+
+	<div>&nbsp;</div>	
+
+	<div class="descript">
+		Чтобы купить <strong>{{name}}</strong> по безналичному расчету, добавьте его в заказ, распечатайте и оплатите сформированный счет.
+		<br><br>
+		Издательство «ЭНЕРГОПРЕСС» обеспечит <b>бесплатную доставку</b> приобретенных вами документов в любую точку Беларуси.
+		<br><br> 
+		Доставка осуществляется заказными бандеролями или экспресс-посылками, которые прибудут прямо по указанному вами адресу и будут переданы вам под роспись.
+	</div>
+ </div> 
+
+
+<div style="height: 50px">&nbsp;</div>
+
+<footer>
+<div class="footer">
+<hr>
+<div style="text-align:left; float:left">
+ ИЗДАТЕЛЬСТВО «ЭНЕРГОПРЕСС», УНП 190399602, Адрес: 220121, г. Минск, ул. Матусевича, 23-213. Тел.: <nowrap>(017)&nbsp;385-94-44</nowrap>, <a href="tel: +375293859666"><nowrap>(029)&nbsp;385-96-66</nowrap></a>, факс: <nowrap>(017)&nbsp;392-33-33 </nowrap>
+</div>
+<div style="float:right; ">
+<img src="../../stat/flag.png" style="top: 50%; margin-top: -13px;">&nbsp;BY ©&nbsp;2019  «Энергопресс»
+ </div>
+</div>
+</footer>
+
+</div>
+<script>
+document.getElementById("knopka2").style.display = (window.opener) ? "none" : "block";
+/*function addToLocalStorage (Getcount, Getid){
+}*/
+  function AddToOrder(id) {
+	
+    var count=document.getElementById(id).value;
+    console.log(id+'   '+count);
+	var winToIns;
+	if (count>0)
+      {
+        localStorage[id] = count;
+      }
+    else
+      {
+        delete localStorage[id];
+      }
+		
+    if (window.opener!=null)
+	{
+		winToIns=window.opener;
+		winToIns.WindowOnfocus ();
+		window.close();
+	}
+	else
+	{
+	location.replace("../index.html#"+"{{theme}}")
+	}
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+Sub FromXLS()
+
+Dim EXCELAPP As Object
+Dim p As Page
+Dim q As String
+Dim sh As Shape
+Dim a As String
+
+' Filter for hihg-resolution export
+Dim expOptsH As New StructExportOptions
+expOptsH.ImageType = cdrRGBColorImage
+expOptsH.AntiAliasingType = cdrNormalAntiAliasing
+expOptsH.ResolutionX = 300
+expOptsH.ResolutionY = 300
+expOptsH.SizeX = 980
+expOptsH.SizeY = 1400
+expOptsH.Overwrite = True
+
+' Filter for low-resolution export
+Dim expOptsL As New StructExportOptions
+expOptsL.ImageType = cdrRGBColorImage
+expOptsL.AntiAliasingType = cdrNormalAntiAliasing
+expOptsL.ResolutionX = 300
+expOptsL.ResolutionY = 300
+expOptsL.SizeX = 490
+expOptsL.SizeY = 700
+expOptsL.Overwrite = True
+
+' Set base point all shapes in document
+ActiveDocument.ReferencePoint = cdrBottomLeft
+' Set unit of document
+ActiveDocument.Unit = cdrPixel
+
+
+Set EXCELAPP = CreateObject("excel.application")
+EXCELAPP.Visible = False
+
+
+EXCELAPP.Workbooks.Open (ActiveDocument.FilePath + "ForCovers.xls")
+i = 2
+a = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 1).Value)
+b = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 3).Value)
+c = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 4).Value)
+pgNum = EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 6).Value
+
+
+Do While Len(a) > 0
+    ActiveDocument.Pages(pgNum).Activate
+    ActivePage.CreateLayer ("Temp")
+   
+    
+    ActivePage.Layers("Temp").Activate
+    ' Create today date to insert it in stamp
+    dt = Date
+    Set sh = ActiveLayer.CreateArtisticText(300, 685, dt, , , "Lemon Tuesday", 8)
+    
+    If sh.Selected = False Then sh.CreateSelection
+    ' Fill today date as blue (such stamp color)
+    ActiveShape.Fill.ApplyUniformFill CreateRGBColor(0, 0, 102)
+    ' Rotate today date
+    sh.Rotate 12
+    
+    Set sh = ActiveLayer.CreateArtisticText(759, 1236, a, , , "Arial", 6)
+    ' If len of head of journ is too long as expluatacionnyi
+    If Len(b) > 13 Then
+        Set sh = ActiveLayer.CreateArtisticText(539, 972, b, , , "Arial", 14, -1, , , cdrCenterAlignment)
+    Else
+        Set sh = ActiveLayer.CreateArtisticText(539, 972, b, , , "Arial", 16, -1, , , cdrCenterAlignment)
+    End If
+    ' If len of content of name is too long as
+    If Len(c) > 85 Then
+        
+        Set sh = ActiveLayer.CreateParagraphText(246, 716, 831, 950, c, , , "Arial", 8, , , , cdrCenterAlignment)
+    Else
+        Set sh = ActiveLayer.CreateParagraphText(246, 736, 831, 940, c, , , "Arial", 9, , , , cdrCenterAlignment)
+    End If
+    
+    ' Find penultimate slash in path
+    penultimate = InStrRev(ActiveDocument.FilePath, "\", Len(ActiveDocument.FilePath) - 1)
+    ' Build new path for ready covers
+    out_path = Left(ActiveDocument.FilePath, penultimate) + "_cover\"
+    
+    
+    
+    
+    
+    ' Create low-resolution cover
+    q = out_path & a & ".jpg"
+    ActiveDocument.Export q, cdrJPEG, cdrCurrentPage, expOptsL
+    ' Create high-resolution cover
+    q = out_path & a & "_.jpg"
+    ActiveDocument.Export q, cdrJPEG, cdrCurrentPage, expOptsH
+    ' Delete temp layer, wich contains Name of journ, id  and date. (Return to base temlate)
+    ActivePage.Layers("Temp").Delete
+    
+    
+    i = i + 1
+    a = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 1).Value)
+    b = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 3).Value)
+    c = Trim(EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 4).Value)
+    pgNum = EXCELAPP.ActiveWorkbook.Worksheets("Sheet1").Cells(i, 6).Value
+Loop
+EXCELAPP.Workbooks.Close
+EXCELAPP.Visible = True
+
+
+End Sub
